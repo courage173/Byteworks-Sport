@@ -8,21 +8,31 @@ import CombineHome from './components/Index'
 
 
 class App extends Component {
-
+    state = {
+      data: []
+    }
   componentDidMount(){
-      // this.props.getFix().then(res=> console.log(res))
+     // this.props.getFix().then(res=> this.setState({data: this.props.fixture}))
       // this.props.getTable().then(res => console.log(res))
       // this.props.getHighlight().then(res => console.log(res))
   }
   render() {
+    console.log(this.state.data)
     return (
       <div>
         <Header />
-        <CombineHome />
+        <CombineHome/>
       </div>
     )
   }
 }
 
 
-export default connect(null,{getFix,getTable,getHighlight})(App);
+const mapStateToProps =(state) =>{
+  const fixture = state.Fix.payload
+  return {
+      fixture
+  }
+}
+
+export default connect(mapStateToProps,{getFix,getTable,getHighlight})(App);
