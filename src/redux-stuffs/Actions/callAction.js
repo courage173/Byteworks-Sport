@@ -10,7 +10,7 @@ export const Fixtures = (payload) => ({
 
 
 export const getFix = () => {
-    return dispatch => api.apiCall.getFixtures().then(payload => dispatch(Fixtures(payload.api.fixtures))) 
+    return dispatch => api.apiCall.getFixtures().then(payload => dispatch(Fixtures(payload.response))) 
 }
 //Action for table statnding
 export const Standing = (payload) => ({
