@@ -1,6 +1,8 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid';
-import Fixture from './fixtures/Fixture'
+import Fixture from './fixtures/Fixture';
+import Highlight from './feed/Highlight';
+import Standing from './standing/Standing'
 
 const CombineBody = () => {
     
@@ -9,8 +11,12 @@ const CombineBody = () => {
             <Grid item xs={8} sm={3}>
                 <Fixture  />
             </Grid>
-            <Grid item xs={8} sm={6}><h1>I</h1></Grid>
-            <Grid item xs={8} sm={3}><h1>Knowk</h1></Grid>
+            <Grid item xs={8} sm={6}>
+                <Highlight/> 
+            </Grid>
+            <Grid item xs={8} sm={3}>
+                <Standing />
+            </Grid>
         </Grid>
     )
 }
