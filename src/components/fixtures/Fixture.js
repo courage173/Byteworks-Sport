@@ -41,7 +41,7 @@ class Fixture extends Component {
         data: []
     }
     componentDidMount(){
-         this.props.getFix().then(res=> this.setState({data: this.props.fixture}))
+         this.props.getFix().then(res=> this.setState({data: res.payload}))
          // this.props.getTable().then(res => console.log(res))
          // this.props.getHighlight().then(res => console.log(res))
      }
@@ -54,13 +54,13 @@ render(){
         <Card className={classes.root}>
         <CardContent className={classes.content}>
         <Typography className={classes.league} variant="h5" component="h4">
-            {data.league.name}
+            {data.tournament_name}
           </Typography>
           <Typography id='text' className={classes.name} variant="body2" style={{color: 'rgba(216, 14, 14, 0.82)'}}>
-            {dayjs(data.fixture.date).format('h:mm a, MMMM DD YYYY')}
+            {dayjs(data.date).format('h:mm a, MMMM DD YYYY')}
           </Typography>
           <Typography className={classes.pos} style={{color: 'rgba(216, 14, 14, 0.82)'}}>
-            <span>{data.teams.home.name} </span> vs <span> {data.teams.away.name} </span>
+            <span>{data.home_team.full} </span> vs <span> {data.visitant_team.full} </span>
           </Typography>
         </CardContent>
         <CardActions>
