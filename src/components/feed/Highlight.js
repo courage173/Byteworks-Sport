@@ -9,6 +9,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import './Feed.css'
 
 
 const data = [
@@ -32,6 +33,11 @@ const data = [
         image: "https://images.daznservices.com/di/library/GOAL/68/a8/samuel-chukwueze-villarreal-2019-20_160yo6q912hsf1an3w6prp0t3y.jpg?t=861249344&quality=60&w=1600",
         content: "The Nigeria international made a second-half appearance as the Yellow Submarine secured a narrow win at Estadio de la Ceramica. Samuel Chukwueze was in action as Villarreal clinched a hard-fought 2-1 victory against Levante in Saturday’s La Liga game."
     },
+    {
+        title: "Chukwueze helps Villarreal climb to Europa League spot with Levante win",
+        image: "https://images.daznservices.com/di/library/GOAL/68/a8/samuel-chukwueze-villarreal-2019-20_160yo6q912hsf1an3w6prp0t3y.jpg?t=861249344&quality=60&w=1600",
+        content: "The Nigeria international made a second-half appearance as the Yellow Submarine secured a narrow win at Estadio de la Ceramica. Samuel Chukwueze was in action as Villarreal clinched a hard-fought 2-1 victory against Levante in Saturday’s La Liga game."
+    },
 ]
 const styles ={
   root: {
@@ -39,10 +45,10 @@ const styles ={
     margin: '1vh'
   },
   wrapper: {
-    border: "1px solid #e2d7d7",
+   // border: "1px solid #e2d7d7",
     width: '90%',
     margin: '4vh',
-    boxShadow: '2px 2px #e2d7d7'
+    backgroundColor: 'white',
   },
   image: {
     width: '100%',
@@ -83,7 +89,7 @@ class Highlight extends Component {
 render(){
     const {classes} = this.props
    const news = data.map((res,index) => (
-       <div className={classes.wrapper}>
+       <div id='wra' className={classes.wrapper}>
            <Typography variant="h1" className={classes.title}>{res.title}</Typography>
            <img className={classes.image} alt="Photo" src={res.image} />
            <Typography variant="body2" className={classes.content}> {res.content} </Typography>

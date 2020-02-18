@@ -1,0 +1,9 @@
+@media only screen
+and (max-width : 768px)
+ { 
+    #wra {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;       
+    }
+}

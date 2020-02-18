@@ -1,5 +1,6 @@
 .wrapper {
-    border: 1px solid grey
+    border: 1px solid grey;
+    background-color: white
 }
 
 
@@ -10,3 +11,14 @@ t{
   .rowColour {
     background-color: #dacdcd
   }
+
+
+  @media only screen
+and (max-width : 768px)
+ { 
+    #standWrap {
+       
+        width: 100%!important;       
+    }
+}
+

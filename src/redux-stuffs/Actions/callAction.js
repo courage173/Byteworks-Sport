@@ -10,7 +10,7 @@ export const Fixtures = (payload) => ({
 
 
 export const getFix = () => {
-    return dispatch => api.apiCall.getFixtures().then(payload => dispatch(Fixtures(payload))) 
+    return dispatch => api.apiCall.getFixtures().then(payload => dispatch(Fixtures(payload.result))) 
 }
 //Action for table statnding
 export const Standing = (payload) => ({
@@ -21,7 +21,7 @@ export const Standing = (payload) => ({
 
 
 export const getTable = () => {
-    return dispatch => api.apiCall.getTables().then(payload => console.log(payload)) 
+    return dispatch => api.apiCall.getTables().then(payload => dispatch(Standing(payload.result.total))) 
 }
 
 //Action for Video Highlights
@@ -33,5 +33,5 @@ export const Highlight = (payload) => ({
 
 
 export const getHighlight = () => {
-    return dispatch => api.apiCall.getHighlights().then(payload => dispatch(Highlight(payload))) 
+    return dispatch => api.apiCall.getHighlights().then(payload => dispatch(Highlight(payload.result))) 
 }

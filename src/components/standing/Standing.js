@@ -3,6 +3,7 @@ import {connect} from "react-redux"
 import {getFix,getTable,getHighlight} from '../../redux-stuffs/Actions/callAction';
 import data from './data'
 import dayjs from 'dayjs';
+import Livescores from './Livescores'
 
 import './standing.css'
 import { withStyles } from '@material-ui/core/styles';
@@ -12,10 +13,11 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+
 const styles ={
   root: {
     minWidth: 275,
-    margin: '1vh'
+    marginTop: '1vh'
   },
   bullet: {
     display: 'inline-block',
@@ -40,39 +42,40 @@ const styles ={
 
 class Standing extends Component {
     state = {
-        data: []
+        data: [],
+        load: false,
     }
     componentDidMount(){
          //this.props.getFix().then(res=> this.setState({data: this.props.fixture}))
-         // this.props.getTable().then(res => this.setState({data: res.payload.league.standings[0]}))
-         // this.props.getHighlight().then(res => console.log(res))
+         this.props.getTable().then(res => this.setState({data: res.payload}))
+         this.props.getHighlight().then(res => this.setState({load: true}))
      }
 
 render(){
     const {classes} = this.props
-    console.log(this.state.data)
-    const table = data.map((res,index) => {
+    //console.log(this.state.data)
+    const table = this.state.data.map((res,index) => {
         if(index % 2 === 0){
           return  (
             <tr className='rowColour'>
-            <td> {res.name} </td>
-            <td>{res.matches}</td>
-            <td>{res.won}</td>
-            <td>{res.drawn}</td>
-            <td>{res.lost}</td>
-            <td>{res.points}</td>
+            <td> {res.standing_team} </td>
+            <td>{res.standing_P}</td>
+            <td>{res.standing_W}</td>
+            <td>{res.standing_D}</td>
+            <td>{res.standing_L}</td>
+            <td>{res.standing_PTS}</td>
            
             </tr>
           )
         }else{
             return(
                 <tr >
-                <td> {res.name} </td>
-                <td>{res.matches}</td>
-                <td>{res.won}</td>
-                <td>{res.drawn}</td>
-                <td>{res.lost}</td>
-                <td>{res.points}</td>
+                 <td> {res.standing_team} </td>
+                <td>{res.standing_P}</td>
+                <td>{res.standing_W}</td>
+                <td>{res.standing_D}</td>
+                <td>{res.standing_L}</td>
+                <td>{res.standing_PTS}</td>
                
                 </tr>
             )
@@ -80,7 +83,7 @@ render(){
     })
   return (
       <Fragment>
-        <table className='wrapper' border="0" cellspacing="0" cellpadding="4px" style={{width:'90%',marginTop: '4vh'}}>
+        <table className='wrapper' id='standWrap' border="0" cellspacing="0" cellpadding="4px" style={{width:'90%',marginTop: '4vh'}}>
             <tr>
                 <th align="left">team</th>
                 <th>M</th>
@@ -92,6 +95,7 @@ render(){
            {table}
        
         </table>
+        {/* {this.state.loading ===true? <Livescores /> : null} */}
       </Fragment>
     
   );

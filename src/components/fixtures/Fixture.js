@@ -13,7 +13,9 @@ import Typography from '@material-ui/core/Typography';
 const styles ={
   root: {
     minWidth: 275,
-    margin: '1vh'
+    marginLeft: '1vh',
+    marginRight: '1vh',
+    marginTop: '3vh'
   },
   bullet: {
     display: 'inline-block',
@@ -28,11 +30,12 @@ const styles ={
     marginBottom: 12,
   },
   league: {
-      marginTop: "5vh",
+      
       alignItems: "center"
   },
   content: {
-      
+      alignItems: 'center',
+      alignContent: 'center'
   }
 };
 
@@ -41,36 +44,46 @@ class Fixture extends Component {
         data: []
     }
     componentDidMount(){
-         this.props.getFix().then(res=> this.setState({data: res.payload}))
+         this.props.getFix().then(res=> this.setState({data: this.props.fixture}))
          // this.props.getTable().then(res => console.log(res))
          // this.props.getHighlight().then(res => console.log(res))
      }
 
 render(){
     const {classes} = this.props
-  
-  const bull = <span className={classes.bullet}>•</span>;
-    const fixtures = this.state.data.map((data,index) => (
-        <Card className={classes.root}>
+    console.log(this.state.data)
+    const row = 24
+    const fixtures = this.state.data.map((data,index) => {
+      if(index <= row){
+        return (
+          
         <CardContent className={classes.content}>
         <Typography className={classes.league} variant="h5" component="h4">
-            {data.tournament_name}
+            {data.country_name}
+          </Typography>
+        <Typography className={classes.league} variant="h5" component="h4">
+            {data.league_name}
           </Typography>
           <Typography id='text' className={classes.name} variant="body2" style={{color: 'rgba(216, 14, 14, 0.82)'}}>
-            {dayjs(data.date).format('h:mm a, MMMM DD YYYY')}
+            {dayjs(data.event_date + ' ' + data.event_time).format('h:mm a, MMMM DD YYYY')}
           </Typography>
           <Typography className={classes.pos} style={{color: 'rgba(216, 14, 14, 0.82)'}}>
-            <span>{data.home_team.full} </span> vs <span> {data.visitant_team.full} </span>
+            <span>{data.event_home_team} </span> vs <span> {data.event_away_team} </span>
           </Typography>
+          <hr />
         </CardContent>
-        <CardActions>
-          <Button size="small">Show More</Button>
-        </CardActions>
-      </Card>  
-    ))
+      
+      
+        )
+      }
+    })
   return (
       <Fragment>
-        {fixtures}
+        <Card className={classes.root}>
+        <Typography style={{fontSize: '20px',marginButtom: '5px' ,textAlign:'center', backgroundColor: '#a270d4', fontWeight: 'bold'}} variant='h5'>
+                Fixtures</Typography>
+           {fixtures}
+        </Card>
       </Fragment>
     
   );
