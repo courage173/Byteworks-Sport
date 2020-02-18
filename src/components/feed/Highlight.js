@@ -1,17 +1,13 @@
 import React,{Component, Fragment} from 'react';
 import {connect} from "react-redux"
 import {getFix,getTable,getHighlight} from '../../redux-stuffs/Actions/callAction';
-import dayjs from 'dayjs';
 
+//styles stuff
 import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import './Feed.css'
 
-
+//mock data
 const data = [
     {
         title: "Klopp shocked by Man City's Champions League ban",
@@ -42,12 +38,13 @@ const data = [
 const styles ={
   root: {
     minWidth: 275,
-    margin: '1vh'
+    margin: '1vh',
+    
   },
   wrapper: {
    // border: "1px solid #e2d7d7",
     width: '90%',
-    margin: '4vh',
+    margin: '3.2vh 4vh 2vh 3vh',
     backgroundColor: 'white',
   },
   image: {
@@ -91,7 +88,7 @@ render(){
    const news = data.map((res,index) => (
        <div id='wra' className={classes.wrapper}>
            <Typography variant="h1" className={classes.title}>{res.title}</Typography>
-           <img className={classes.image} alt="Photo" src={res.image} />
+           <img className={classes.image} alt="plaayer_photo" src={res.image} />
            <Typography variant="body2" className={classes.content}> {res.content} </Typography>
        </div>
    ))
@@ -107,7 +104,7 @@ render(){
   
 }
 
-
+//getting hightlighs from the store
 const mapStateToProps =(state) =>{
     const highlight = state.Highlight.payload
     return {

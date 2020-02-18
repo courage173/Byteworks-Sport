@@ -20,7 +20,7 @@ class App extends Component {
   render() {
     console.log(this.state.data)
     return (
-      <div>
+      <div style={{height:"1450px"}}>
         <Header />
         <CombineHome/>
         <Footer />

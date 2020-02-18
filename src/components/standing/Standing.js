@@ -1,17 +1,11 @@
 import React,{Component, Fragment} from 'react';
 import {connect} from "react-redux"
 import {getFix,getTable,getHighlight} from '../../redux-stuffs/Actions/callAction';
-import data from './data'
-import dayjs from 'dayjs';
-import Livescores from './Livescores'
 
+//styles stuff
 import './standing.css'
 import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import Slide from 'react-reveal/Slide'
 
 
 const styles ={
@@ -46,17 +40,18 @@ class Standing extends Component {
         load: false,
     }
     componentDidMount(){
-         //this.props.getFix().then(res=> this.setState({data: this.props.fixture}))
+         
          this.props.getTable().then(res => this.setState({data: res.payload}))
          this.props.getHighlight().then(res => this.setState({load: true}))
      }
 
 render(){
-    const {classes} = this.props
+    
     //console.log(this.state.data)
     const table = this.state.data.map((res,index) => {
         if(index % 2 === 0){
           return  (
+            <Slide right>
             <tr className='rowColour'>
             <td> {res.standing_team} </td>
             <td>{res.standing_P}</td>
@@ -66,9 +61,11 @@ render(){
             <td>{res.standing_PTS}</td>
            
             </tr>
+            </Slide>
           )
         }else{
             return(
+              <Slide right>
                 <tr >
                  <td> {res.standing_team} </td>
                 <td>{res.standing_P}</td>
@@ -78,12 +75,14 @@ render(){
                 <td>{res.standing_PTS}</td>
                
                 </tr>
+                </Slide>
             )
         }
     })
   return (
       <Fragment>
-        <table className='wrapper' id='standWrap' border="0" cellspacing="0" cellpadding="4px" style={{width:'90%',marginTop: '4vh'}}>
+        
+        <table className='wrapper' id='standWrap' border="0" cellspacing="0" cellpadding="4px" style={{width:'90%',marginTop: '1vh'}}>
             <tr>
                 <th align="left">team</th>
                 <th>M</th>
@@ -95,7 +94,8 @@ render(){
            {table}
        
         </table>
-        {/* {this.state.loading ===true? <Livescores /> : null} */}
+        
+       
       </Fragment>
     
   );
@@ -103,7 +103,7 @@ render(){
   
 }
 
-
+//getting fixtures from the redux store
 const mapStateToProps =(state) =>{
     const fixture = state.Fix.payload
     return {

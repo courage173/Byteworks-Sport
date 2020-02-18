@@ -4,6 +4,7 @@ import Fixture from './fixtures/Fixture';
 import Highlight from './feed/Highlight';
 import Standing from './standing/Standing'
 import Livescores from './standing/Livescores'
+import {Element} from 'react-scroll'
 
 import './index.css'
 
@@ -13,14 +14,26 @@ const CombineBody = () => {
     return (
         <Grid container className='mainWrap' spacing={3} style={{marginTop: '50px'}}>
             <Grid id='gridWrap' item xs={8} sm={3}>
-                <Fixture  />
+                <Element name='fixture'>
+                     <Fixture  />
+                </Element>
+                
             </Grid>
             <Grid id='gridWrap' item xs={8} sm={6}>
-                <Highlight/> 
+                <Element name='news'>
+                    <Highlight/> 
+                </Element>
+                
             </Grid>
             <Grid id='gridWrap' item xs={8} sm={3}>
-                <Standing />
-                <Livescores />
+                <Element name='standing'>
+                `    <Standing />
+                </Element>
+                <Element name='livescore'>
+                     <Livescores />
+                </Element>
+
+                
                
             </Grid>
         </Grid>

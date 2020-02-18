@@ -13,6 +13,7 @@ const SideDrawer = (props)=> {
             smooth: true,
             offset: -150
         })
+        //closes the drawer after scrolling
         props.onClose(false)
     }
     return (
@@ -22,16 +23,19 @@ const SideDrawer = (props)=> {
            onClose={()=>{props.onClose(false)}}
         >
             <List component='nav'>
-                <ListItem button onClick={() => scrollToelement('featured')}>
+                <ListItem button onClick={() => scrollToelement('')}>
                     Home
                 </ListItem>
-                <ListItem button onClick={() => scrollToelement('venuenfo')}>
+                <ListItem button onClick={() => scrollToelement('fixture')}>
                      Fixtures
                 </ListItem>
-                <ListItem button onClick={() => scrollToelement('venuenfo')}>
+                <ListItem button onClick={() => scrollToelement('news')}>
                     News
                 </ListItem>
-                <ListItem button onClick={() => scrollToelement('venuenfo')}>
+                <ListItem button onClick={() => scrollToelement('standing')}>
+                    Standing
+                </ListItem>
+                <ListItem button onClick={() => scrollToelement('livescore')}>
                     Livescores
                 </ListItem>
                 

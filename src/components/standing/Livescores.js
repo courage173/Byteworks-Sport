@@ -1,16 +1,15 @@
 import React, { Fragment } from 'react'
 import {connect} from "react-redux"
 import dayjs from 'dayjs';
-//mui stuffs
+//styles stuffs
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 
 
+//mui style
 const styles = {
     root: {
       minWidth: 275,
@@ -57,6 +56,7 @@ const Livescores = (props) => {
 }
 
 
+//getting livescores from the store
 const mapStateToProps =(state) =>{
     const lives = state.Highlight.payload
     return {

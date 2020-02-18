@@ -1,14 +1,14 @@
 import React,{Component, Fragment} from 'react';
-import {connect} from "react-redux"
+import {connect} from "react-redux";
 import {getFix,getTable,getHighlight} from '../../redux-stuffs/Actions/callAction';
 import dayjs from 'dayjs';
 
+//stles stuff
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const styles ={
   root: {
@@ -41,19 +41,19 @@ const styles ={
 
 class Fixture extends Component {
     state = {
-        data: []
+        data: [],
+        loading: false
     }
     componentDidMount(){
-         this.props.getFix().then(res=> this.setState({data: this.props.fixture}))
-         // this.props.getTable().then(res => console.log(res))
-         // this.props.getHighlight().then(res => console.log(res))
+         this.props.getFix().then(res=> this.setState({data: this.props.fixture,loading: true}))
+         
      }
 
 render(){
     const {classes} = this.props
     console.log(this.state.data)
     const row = 24
-    const fixtures = this.state.data.map((data,index) => {
+    const fixtures =<CircularProgress size={25}/> && this.state.data.map((data,index) => {
       if(index <= row){
         return (
           
@@ -91,7 +91,7 @@ render(){
   
 }
 
-
+//getting fixture from the store
 const mapStateToProps =(state) =>{
     const fixture = state.Fix.payload
     return {

@@ -8,7 +8,7 @@ export const Fixtures = (payload) => ({
 })
 
 
-
+//api call for fixtures
 export const getFix = () => {
     return dispatch => api.apiCall.getFixtures().then(payload => dispatch(Fixtures(payload.result))) 
 }
@@ -19,7 +19,7 @@ export const Standing = (payload) => ({
 })
 
 
-
+//api call for standing
 export const getTable = () => {
     return dispatch => api.apiCall.getTables().then(payload => dispatch(Standing(payload.result.total))) 
 }
@@ -31,7 +31,7 @@ export const Highlight = (payload) => ({
 })
 
 
-
+//api call for highlight
 export const getHighlight = () => {
     return dispatch => api.apiCall.getHighlights().then(payload => dispatch(Highlight(payload.result))) 
 }
