@@ -16,6 +16,9 @@ const styles = {
       marginTop: '1vh',
       width: '90%'
     },
+    time: {
+      float: 'right'
+    }
 }
 
 
@@ -36,7 +39,7 @@ const Livescores = (props) => {
                         {dayjs(data.event_date + ' ' + data.event_time).format('h:mm a, MMMM DD YYYY')}
                       </Typography>
                       <Typography className={classes.pos} style={{color: 'rgba(216, 14, 14, 0.82)'}}>
-                    <span>{data.event_home_team} </span> {data.event_final_result} <span> {data.event_away_team} </span> <span>{data.event_status}</span>
+                    <span>{data.event_home_team} </span> {data.event_final_result} <span> {data.event_away_team} </span> <span className={classes.time}>{data.event_status}`</span>
                       </Typography>
                       <hr />
                     </CardContent> 
