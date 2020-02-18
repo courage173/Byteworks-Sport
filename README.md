@@ -1,3 +1,24 @@
+## Frame Work
+I implemented this project using React libary because it is the libary am good in to create web pages.
+
+## Description
+This project bytesport is a single sport page, showing fixtures, livescores, standing and news feeds of soccer.
+this project took me 5days to build. 
+ 
+ the most difficult part of the project was getting a free api, the api https://statsfc.com/, stated
+ on the instruction pdf didnt offer me the end points for free or even trial they only gave me access to their widget.
+ getting the Api i used took a long(days) search as all the other free api's i got capped my request. the current api am using gave
+ me a trial account for two weeks. 
+
+ i am more proud of the standing table.
+
+ it was stated on the instruction manual to implement news section, none of the api i saw have live news feed. 
+ so i had to use some dummy data to implement the news feed.
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -29,13 +50,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## Learn More
 
